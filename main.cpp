@@ -142,7 +142,7 @@ void PlayHell()
 void loop() {
   static int HeavenCount = 0;
   static int HellCount = 0;
-
+  bool devil = false;
 
   if (digitalRead(TRIGGER_PIN) == HIGH)
   {
@@ -158,23 +158,28 @@ void loop() {
       PlayHell();
       HeavenCount = 0;
       HellCount++;
+      devil = true:
     }
+delay(259);
   }
 
-  delay(500);
+  
 
   while (playWav1.isPlaying())
   {
     if (digitalRead(TRIGGER_PIN) == HIGH)
       break;
-
+    if (devil)
+{
     digitalWrite(HELL_PIN3, HIGH);
     delay(100);
     digitalWrite(HELL_PIN3, LOW);
     
     delay(100);
+}
 
   }
+
   digitalWrite(HEAVEN_PIN1, LOW);
   digitalWrite(HEAVEN_PIN2, LOW);
   digitalWrite(HELL_PIN1, LOW);
